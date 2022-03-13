@@ -1,5 +1,7 @@
 //set up the list for local storage 
 //display current d/m/y at top of the page
+var currentDay = moment(new Date()).format("MM/DD/YYYY");
+$("#currentDay").text(currentDay);
 //set time and color for tasks based on time stamp
 //remove all classes
 //load tasks on load
