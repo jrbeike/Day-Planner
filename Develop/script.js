@@ -1,4 +1,3 @@
-//set up the list for local storage 
 //display current d/m/y at top of the page
 var currentDay = moment(new Date()).format("MM/DD/YYYY");
 $("#currentDay").text(currentDay);
@@ -22,12 +21,28 @@ function timeBlockColor(){
 
 //call function
 timeBlockColor();
-//remove all classes... already removed had to add first
-//load tasks on load
+//set up the list for local storage 
 //read tasks from storage
-//update time second every 1000ms
-//on task click highligh task
-//highlight unsaved tasks
-//indicate changes are unsaved
-//on saave update tasks in local storage
-//promts to save unsaved chages before page reload
+var saveBtn = $(".saveBtn");
+
+saveBtn.on("click", function(){
+    var time = $(this).siblings(".hour").text();
+    var time = $(this).siblings(".todo").val();
+
+    localStorage.setItem(time,todo);
+});
+
+//display text 
+function saveTodo() {
+    $(".hour").each(function() {
+        var currentHour = $(this).text();
+        var currentTodo = localStorage.getItem(currentHour);
+
+        if(currentTodo !== null) {
+            $(this).siblings(".todo").val(currentTodo);
+        }
+    });
+}
+
+//call function
+saveTodo();
