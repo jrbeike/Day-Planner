@@ -3,7 +3,26 @@
 var currentDay = moment(new Date()).format("MM/DD/YYYY");
 $("#currentDay").text(currentDay);
 //set time and color for tasks based on time stamp
-//remove all classes
+function timeBlockColor(){
+    var hour = moment().hours();
+
+    $(".time-block").each(function(){
+    //color for time block by id
+        var currentHour =parseInt($(this).attr("id"));
+
+        if (currentHour > hour) {
+            $(this).addClass("future");
+        } else if (currentHour === hour){
+            $(this).addClass("present");
+        } else{
+            $(this).addClass("past");
+        }
+    })
+};
+
+//call function
+timeBlockColor();
+//remove all classes... already removed had to add first
 //load tasks on load
 //read tasks from storage
 //update time second every 1000ms
