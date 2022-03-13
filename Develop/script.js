@@ -27,9 +27,9 @@ var saveBtn = $(".saveBtn");
 
 saveBtn.on("click", function(){
     var time = $(this).siblings(".hour").text();
-    var time = $(this).siblings(".todo").val();
+    var todo = $(this).siblings(".todo").val();
 
-    localStorage.setItem(time,todo);
+    localStorage.setItem(time, todo);
 });
 
 //display text 
